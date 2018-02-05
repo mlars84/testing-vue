@@ -10,6 +10,18 @@ export default {
   data: function () {
     return {
       code: '',
+      coupons: [
+        {
+          code: '10OFF',
+          message: '10% Off!',
+          discount: 10
+        },
+        {
+          code: 'FREE',
+          message: 'Entirely Free!',
+          discount: 100
+        }
+    ],
       valid: false   
     }
   },

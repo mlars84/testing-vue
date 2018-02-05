@@ -15,10 +15,10 @@ describe ('Reminders', () => {
   it ('can add reminders', () => {
     addReminder('Go to the store')
     
-    expect(wrapper.find('ul').text()).toContain('Go to the store')
+    expect(remindersList()).toContain('Go to the store')
   })
 
-  it ('can remove any reminder', () => {
+  it ('can remove any one reminder', () => {
     addReminder('Go to the store')
     addReminder('Take Fritz to the dog park')
 
@@ -26,10 +26,11 @@ describe ('Reminders', () => {
     
     deleteButton.trigger('click')
 
-    expect(wrapper.find('ul').text()).not.toContain('Go to the store')
+    expect(remindersList()).not.toContain('Go to the store')
+    expect(remindersList()).toContain('Take Fritz to the dog park')
   })
 
-  // helper function for adding reminders
+  // helper functions
   function addReminder (body) {
     let newReminder = wrapper.find('.new-reminder')
 
@@ -38,4 +39,9 @@ describe ('Reminders', () => {
 
     wrapper.find('button').trigger('click')
   }
-})
+
+  function remindersList () {
+    return wrapper.find('ul').text()
+  }
+}) 
+ 
